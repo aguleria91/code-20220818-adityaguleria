@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { describe, it } = require('mocha');
-const { BmiCalculator } = require('../../src/bmi-calculator');
+const { BmiCalculator, BmiCategory } = require('../../src/bmi');
 
 describe("Bmi Calculator", () => {
 
@@ -34,5 +34,26 @@ describe("Bmi Calculator", () => {
 
     expect(bmi).to.be.a('number');
     expect(bmi).to.be.equal(32.8);
+  })
+})
+
+describe("Bmi Category", () => {
+
+  it("should return an error if bmi range is not a number", async () => {
+    const bmi = "abc";
+
+    try {
+      const category = BmiCategory(bmi);
+    } catch (error) {
+      expect(error.message).to.be.eq("BMI must be an number")
+    }
+  })
+
+  it("should return the correct bmi category", async () => {
+    const bmi = 34.9;
+
+    const category = BmiCategory(bmi);
+    expect(category).to.be.an('object');
+    expect(category).to.include({ bmiCategory: 'Moderately obese', healthRisk: 'Medium risk' });
   })
 })
