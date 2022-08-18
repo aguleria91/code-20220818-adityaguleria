@@ -2,17 +2,26 @@
   "name": "bmi-calculator",
   "version": "1.0.0",
   "description": "Calculates BMI for a large dataset and counts total number of overweight people.",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*/*.spec.js"
+    "build": "tsc -p tsconfig.json",
+    "start": "tsc -p tsconfig.json && node dist/index.js",
+    "test": "mocha -r ts-node/register tests/*/*.spec.ts"
   },
   "author": "aguleria91@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^9.1.1",
+    "@types/stream-json": "^1.7.2",
     "chai": "^4.3.6",
     "mocha": "^9.2.2"
   },
   "dependencies": {
-    "run-array": "^3.1.5"
+    "@types/event-stream": "^4.0.0",
+    "event-stream": "^4.0.1",
+    "jsonstream-ts": "^1.3.6",
+    "stream-json": "^1.7.4",
+    "ts-node": "^10.9.1"
   }
 }
